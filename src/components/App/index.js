@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import { Container, Step, StepLabel, Stepper, Button } from '@material-ui/core';
-import Template from '../Template';
+import { Container, Step, StepLabel, Stepper } from '@material-ui/core';
+import Items from '../Items';
+import baseItems from '../../items';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -20,37 +19,65 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function getSteps() {
-    return ['Crear', 'Lista'];
-}
+const getSelectedItems = (items) => {
+    console.log(items);
+    return items
+        .map((c) => {
+            return {
+                category: c.category,
+                items: c.items.filter((i) => i.selected),
+            };
+        })
+        .filter((i) => i.items.length > 0);
+};
 
-function getStepContent(step) {
+const getStepContent = (step, items, handleTemplateChange, handleListChange) => {
     switch (step) {
         case 0:
-            return <Template />;
+            return <Items
+                        items={items}
+                        handleTemplateChange={handleTemplateChange}
+                        isChecked={i => i.selected}
+                    />;
         case 1:
-            return 'Artículos';
+            return (
+                <Items
+                    items={getSelectedItems(items)}
+                    handleTemplateChange={handleListChange}
+                    isChecked={i => i.done}
+                />
+            );
         default:
             break;
     }
-}
+};
 
 function App() {
+    const items = localStorage.getItem('items')
+        ? JSON.parse(localStorage.getItem('items'))
+        : baseItems;
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
-    const steps = getSteps();
+    const [templateItems, setTemplateItems] = React.useState(items);
+    const steps = ['Todos', 'Lista'];
 
-    const handleNext = () => {
-      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    const handleTemplateChange = (category, name) => {
+        let copy = Object.assign([], templateItems);
+        let item = copy.find((i) => i.category === category).items.find((i) => i.name === name);
+        item.selected = !item.selected;
+        setTemplateItems(copy);
     };
 
-    const handleBack = () => {
-      setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    const handleListChange = (category, name) => {
+        let copy = Object.assign([], templateItems);
+        let item = copy.find((i) => i.category === category).items.find((i) => i.name === name);
+        item.done = !item.done;
+        setTemplateItems(copy);
     };
 
-    const handleReset = () => {
-      setActiveStep(0);
-    };
+    useEffect(() => {
+        localStorage.setItem('items', JSON.stringify(templateItems));
+    });
 
     return (
         <div className="App">
@@ -72,20 +99,14 @@ function App() {
                     })}
                 </Stepper>
                 <div>
-                    {activeStep === steps.length ? (
-                        <div>
-                            <Typography className={classes.instructions}>
-                                All steps completed
-                            </Typography>
-                            <Button onClick={handleReset}>Reset</Button>
-                        </div>
-                    ) : (
-                        <div>
-                            <Typography className={classes.instructions}>
-                                {getStepContent(activeStep)}
-                            </Typography>
-                        </div>
-                    )}
+                    <Typography className={classes.instructions}>
+                        {getStepContent(
+                            activeStep,
+                            templateItems,
+                            handleTemplateChange,
+                            handleListChange
+                        )}
+                    </Typography>
                 </div>
             </Container>
         </div>

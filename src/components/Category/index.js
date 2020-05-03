@@ -15,29 +15,15 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-      width: '100%',
-      maxWidth: 360,
-      backgroundColor: theme.palette.background.paper,
+        width: '100%',
+        maxWidth: 360,
+        backgroundColor: theme.palette.background.paper,
     },
-  }));
+}));
 
-function CategoryPanel(props) {
+function Category(props) {
     const classes = useStyles();
-    const { category, items } = props;
-    const [ checked, setChecked ] = React.useState([]);
-
-    const handleToggle = (value) => () => {
-        const currentIndex = checked.indexOf(value);
-        const newChecked = [...checked];
-
-        if (currentIndex === -1) {
-          newChecked.push(value);
-        } else {
-          newChecked.splice(currentIndex, 1);
-        }
-
-        setChecked(newChecked);
-      };
+    const { category, items, isChecked, handleItemChange } = props;
 
     return (
         <div>
@@ -48,11 +34,16 @@ function CategoryPanel(props) {
                 <ExpansionPanelDetails>
                     <List className={classes.root}>
                         {items.map((i) => (
-                            <ListItem key={i} dense button onClick={handleToggle(i)}>
+                            <ListItem
+                                key={i.name}
+                                dense
+                                button
+                                onClick={() => handleItemChange(category, i.name)}
+                            >
                                 <ListItemIcon>
-                                    <Checkbox checked={checked.indexOf(i) !== -1} />
+                                    <Checkbox checked={isChecked(i)} />
                                 </ListItemIcon>
-                                <ListItemText id={i} primary={i} />
+                                <ListItemText id={i.name} primary={i.name} />
                             </ListItem>
                         ))}
                     </List>
@@ -62,4 +53,4 @@ function CategoryPanel(props) {
     );
 }
 
-export default CategoryPanel;
+export default Category;
