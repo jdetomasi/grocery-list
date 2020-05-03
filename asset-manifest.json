@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/grocery-list/static/css/main.5ecd60fb.chunk.css",
+    "main.css": "/grocery-list/static/css/main.69eda509.chunk.css",
     "main.js": "/grocery-list/static/js/main.99458c3e.chunk.js",
     "main.js.map": "/grocery-list/static/js/main.99458c3e.chunk.js.map",
     "runtime-main.js": "/grocery-list/static/js/runtime-main.058846d8.js",
@@ -8,15 +8,15 @@
     "static/js/2.5699e883.chunk.js": "/grocery-list/static/js/2.5699e883.chunk.js",
     "static/js/2.5699e883.chunk.js.map": "/grocery-list/static/js/2.5699e883.chunk.js.map",
     "index.html": "/grocery-list/index.html",
-    "precache-manifest.960c105eaa52309fe6a9b2e8f5719e55.js": "/grocery-list/precache-manifest.960c105eaa52309fe6a9b2e8f5719e55.js",
+    "precache-manifest.876c804ce213cb65df871df205cd2d01.js": "/grocery-list/precache-manifest.876c804ce213cb65df871df205cd2d01.js",
     "service-worker.js": "/grocery-list/service-worker.js",
-    "static/css/main.5ecd60fb.chunk.css.map": "/grocery-list/static/css/main.5ecd60fb.chunk.css.map",
+    "static/css/main.69eda509.chunk.css.map": "/grocery-list/static/css/main.69eda509.chunk.css.map",
     "static/js/2.5699e883.chunk.js.LICENSE.txt": "/grocery-list/static/js/2.5699e883.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.058846d8.js",
     "static/js/2.5699e883.chunk.js",
-    "static/css/main.5ecd60fb.chunk.css",
+    "static/css/main.69eda509.chunk.css",
     "static/js/main.99458c3e.chunk.js"
   ]
 }
