@@ -1,4 +1,4 @@
-import FileCopyIcon from "@material-ui/icons/FileCopy";
+import SendIcon from '@material-ui/icons/Send';
 import Fab from "@material-ui/core/Fab";
 import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
@@ -12,22 +12,20 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function CopyFab(props) {
-    const { handleShowNotification } = props;
+function SendFab(props) {
     const classes = useStyles();
 
-    const copyList = async () => {
+    const copyList = () => {
         let items = ListService.getListOfSelectedItems();
-        let listAsString = items.map(i => i.name).join('\n');
-        await navigator.clipboard.writeText(listAsString);
-        handleShowNotification('Lista copiada!');
+        let listAsString = items.map(i => i.name).join('%0A');
+        window.location = `whatsapp://send?text=${listAsString}`
     };
 
     return (
         <Fab color="primary" aria-label="Copiar lista" className={classes.fab} onClick={copyList}>
-            <FileCopyIcon />
+            <SendIcon />
         </Fab>
     )
 }
 
-export default CopyFab;
+export default SendFab;
