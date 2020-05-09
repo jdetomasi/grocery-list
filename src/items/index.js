@@ -13,17 +13,17 @@ export default [
                 done: false,
             },
             {
-                name: 'Dedenredante',
+                name: 'Desenredante',
                 selected: false,
                 done: false,
             },
             {
-                name: 'Jabon De Tocador',
+                name: 'Jabón De Tocador',
                 selected: false,
                 done: false,
             },
             {
-                name: 'Dentifrico',
+                name: 'Dentífrico',
                 selected: false,
                 done: false,
             },
@@ -43,7 +43,7 @@ export default [
                 done: false,
             },
             {
-                name: 'Algodon',
+                name: 'Algodón',
                 selected: false,
                 done: false,
             },
@@ -83,7 +83,7 @@ export default [
                 done: false,
             },
             {
-                name: 'Jabon Lavarropas',
+                name: 'Jabón Lavarropas',
                 selected: false,
                 done: false,
             },
@@ -113,7 +113,7 @@ export default [
                 done: false,
             },
             {
-                name: 'Fosforos',
+                name: 'Fósforos',
                 selected: false,
                 done: false,
             },
@@ -140,7 +140,7 @@ export default [
         ],
     },
     {
-        category: 'Almacen',
+        category: 'Almacén',
         items: [
             {
                 name: 'Te / Boldo',
@@ -159,11 +159,6 @@ export default [
             },
             {
                 name: 'Galletitas De Agua',
-                selected: false,
-                done: false,
-            },
-            {
-                name: 'Leche',
                 selected: false,
                 done: false,
             },
@@ -193,12 +188,12 @@ export default [
                 done: false,
             },
             {
-                name: 'Azucar',
+                name: 'Azúcar',
                 selected: false,
                 done: false,
             },
             {
-                name: 'Cafe / Saquitos',
+                name: 'Cafú / Saquitos',
                 selected: false,
                 done: false,
             },
@@ -223,12 +218,12 @@ export default [
                 done: false,
             },
             {
-                name: 'Vinagre / Limon',
+                name: 'Vinagre / Limón',
                 selected: false,
                 done: false,
             },
             {
-                name: 'Dulce De Lece',
+                name: 'Dulce De Leche',
                 selected: false,
                 done: false,
             },
@@ -293,12 +288,12 @@ export default [
         category: 'Enlatados',
         items: [
             {
-                name: 'Acelga Chauchas',
+                name: 'Acelga/Chauchas',
                 selected: false,
                 done: false,
             },
             {
-                name: 'Soja Lentejas',
+                name: 'Soja/Lentejas',
                 selected: false,
                 done: false,
             },
@@ -313,7 +308,7 @@ export default [
                 done: false,
             },
             {
-                name: 'Atun Caballa',
+                name: 'Atún/Caballa',
                 selected: false,
                 done: false,
             },
@@ -323,7 +318,7 @@ export default [
                 done: false,
             },
             {
-                name: 'Savora Salsa Golf',
+                name: 'Savora/Salsa Golf',
                 selected: false,
                 done: false,
             },
@@ -343,7 +338,7 @@ export default [
                 done: false,
             },
             {
-                name: 'Duraznos Anana',
+                name: 'Duraznos/Anana',
                 selected: false,
                 done: false,
             },
@@ -403,7 +398,7 @@ export default [
         category: 'Copetin',
         items: [
             {
-                name: 'Papitas Palitos Manies',
+                name: 'Papitas/Palitos/Manies',
                 selected: false,
                 done: false,
             },
@@ -458,12 +453,12 @@ export default [
                 done: false,
             },
             {
-                name: 'Pap',
+                name: 'Papa',
                 selected: false,
                 done: false,
             },
             {
-                name: 'Cebolla / Verdeo',
+                name: 'Cebolla Verdeo',
                 selected: false,
                 done: false,
             },
@@ -568,7 +563,7 @@ export default [
                 done: false,
             },
             {
-                name: 'Crudo / Bondiola',
+                name: 'Crudo/Bondiola',
                 selected: false,
                 done: false,
             },
@@ -603,7 +598,7 @@ export default [
                 done: false,
             },
             {
-                name: 'Dulce Batata Membrillo',
+                name: 'Dulce Batata/Membrillo',
                 selected: false,
                 done: false,
             },
