@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, {useEffect} from 'react';
+import {makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { Container, Step, StepLabel, Stepper } from '@material-ui/core';
+import {Container, Step, StepLabel, Stepper} from '@material-ui/core';
 import Items from '../Items';
 import baseItems from '../../items';
-import CopyFab from '../CopyFab'
 import NotificationArea from "../Notification";
+import SendFab from "../SendFab";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -119,7 +119,7 @@ function App() {
                         )}
                     </Typography>
                 </div>
-                <CopyFab handleShowNotification = { handleShowNotification } />
+                <SendFab />
                 <NotificationArea notification = { notification } handleCloseNotification = { handleCloseNotification } />
             </Container>
         </div>
