@@ -2,7 +2,7 @@ import SendIcon from '@material-ui/icons/Send';
 import Fab from "@material-ui/core/Fab";
 import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
-import ListService from '../../service/ListService';
+import ListService from '../../service/LocalStorageService';
 
 const useStyles = makeStyles((theme) => ({
     fab: {

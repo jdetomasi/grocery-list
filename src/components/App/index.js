@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+import AppMenuBar from '../AppMenuBar';
 import Typography from '@material-ui/core/Typography';
 import {Container, Step, StepLabel, Stepper} from '@material-ui/core';
 import Items from '../Items';
@@ -15,9 +14,6 @@ const useStyles = makeStyles((theme) => ({
     },
     menuButton: {
         marginRight: theme.spacing(2),
-    },
-    title: {
-        flexGrow: 1,
     },
 }));
 
@@ -33,13 +29,14 @@ const getSelectedItems = (items) => {
         .filter((i) => i.items.length > 0);
 };
 
-const getStepContent = (step, items, handleTemplateChange, handleListChange) => {
+const getStepContent = (step, items, handleTemplateChange, handleListChange, hideDone) => {
     switch (step) {
         case 0:
             return <Items
                         items={items}
                         handleTemplateChange={handleTemplateChange}
                         isChecked={i => i.selected}
+                        hideDone={false}
                     />;
         case 1:
             return (
@@ -47,6 +44,7 @@ const getStepContent = (step, items, handleTemplateChange, handleListChange) => 
                     items={getSelectedItems(items)}
                     handleTemplateChange={handleListChange}
                     isChecked={i => i.done}
+                    hideDone={hideDone}
                 />
             );
         default:
@@ -60,9 +58,14 @@ function App() {
         : baseItems;
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
+    const [hideDone, setHideDone] = React.useState(false);
     const [notification, setNotification] = React.useState(null);
     const [templateItems, setTemplateItems] = React.useState(items);
     const steps = ['Todos', 'Lista'];
+
+    const reloadBaseItems = () => {
+        setTemplateItems(baseItems);
+    }
 
     const handleTemplateChange = (category, name) => {
         let copy = Object.assign([], templateItems);
@@ -92,13 +95,11 @@ function App() {
 
     return (
         <div className="App">
-            <AppBar position="static">
-                <Toolbar>
-                    <Typography variant="h6" className={classes.title}>
-                        Lista
-                    </Typography>
-                </Toolbar>
-            </AppBar>
+            <AppMenuBar
+                handleHideDone={selected => setHideDone(selected)}
+                reloadBaseItems={reloadBaseItems}
+                handleShowNotification={handleShowNotification}
+            />
             <Container>
                 <Stepper activeStep={activeStep} alternativeLabel>
                     {steps.map((label, index) => {
@@ -115,7 +116,8 @@ function App() {
                             activeStep,
                             templateItems,
                             handleTemplateChange,
-                            handleListChange
+                            handleListChange,
+                            hideDone
                         )}
                     </Typography>
                 </div>
