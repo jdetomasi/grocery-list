@@ -6,6 +6,8 @@ import Typography from '@material-ui/core/Typography';
 import { Container, Step, StepLabel, Stepper } from '@material-ui/core';
 import Items from '../Items';
 import baseItems from '../../items';
+import CopyFab from '../CopyFab'
+import NotificationArea from "../Notification";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -58,6 +60,7 @@ function App() {
         : baseItems;
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
+    const [notification, setNotification] = React.useState(null);
     const [templateItems, setTemplateItems] = React.useState(items);
     const steps = ['Todos', 'Lista'];
 
@@ -73,6 +76,14 @@ function App() {
         let item = copy.find((i) => i.category === category).items.find((i) => i.name === name);
         item.done = !item.done;
         setTemplateItems(copy);
+    };
+
+    const handleShowNotification = (notification) => {
+        setNotification(notification);
+    };
+
+    const handleCloseNotification = () => {
+        setNotification(null);
     };
 
     useEffect(() => {
@@ -108,6 +119,8 @@ function App() {
                         )}
                     </Typography>
                 </div>
+                <CopyFab handleShowNotification = { handleShowNotification } />
+                <NotificationArea notification = { notification } handleCloseNotification = { handleCloseNotification } />
             </Container>
         </div>
     );
